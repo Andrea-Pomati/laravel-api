@@ -13,7 +13,7 @@ class ProjectController extends Controller
         // $projects = Project::all()
         $projects = Project::with('type', 'technologies')
         ->orderBy('projects.created_at', 'desc')
-        ->paginate(6);
+        ->get();
 
 
         return response()->json([
@@ -26,7 +26,7 @@ class ProjectController extends Controller
 
     public function show($slug) {
         
-        $project = Project::where('slug', $slug)->first();
+        $project = Project::where('slug', $slug)->with('type', 'technologies')->first();
 
         if($project)  {
 
