@@ -23,4 +23,8 @@ class ProjectController extends Controller
 
 
     }
+
+    public function show($slug) {
+        dd($slug);
+    }
 }
